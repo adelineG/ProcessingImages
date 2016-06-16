@@ -43,9 +43,9 @@ def globalThresholdSelection(thresh, img):
 
 
 def binarization(image):
-	thresImage_res, thres_res = computeThresholdImage(img)
-	thresh = globalThresholdSelection(int(thres_res),img)
-	return newThresholdImage(img, thresh)
+	thresImage_res, thres_res = computeThresholdImage(image)
+	thresh = globalThresholdSelection(int(thres_res),image)
+	return newThresholdImage(image, thresh)
 
 def edgeDetection(image) :
 	return sobel_v(image)**2
@@ -59,10 +59,11 @@ def saveImage(path,name, image):
 
 
 img = openImageFile('./title-50.png')
+img2 = openImageFile('./TH-OC-50-052.jpg')
 
-io.imshow(backgroundRemoval(img))
+io.imshow(backgroundRemoval(img2))
 io.show()
 
-io.imshow(binarization(img))
+io.imshow(binarization(img2))
 io.show()
 
