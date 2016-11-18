@@ -131,6 +131,20 @@ class ExtractDoc:
 		self.rectShape = self.searchExtrema(self.vectX, 1, 0, 0.850, 0.75, self.imageShape, self.rectShape, 0.1)
 		self.rectShape = self.searchExtrema(self.vectY, 0, 1, 0.850, 0.75, self.imageShape, self.rectShape, 0.1)
 
+	def rotationImageProjection(self,imgO):
+		print('search angle rotation...')
+		maxValue = 0
+		maxAngle = 0
+		for angle in range(-10,10,1) :
+			img = ndimage.rotate(imgO, angle, order=0,mode='nearest',reshape = False)
+			#print('angle de : ', angle)
+			valDiff = self.histogramPixelTitleTest(img)
+			print('angle de :', angle, valDiff)
+			if valDiff > maxValue :
+				maxValue = valDiff
+				maxAngle = angle
+
+		return maxAngle
 
 
 try:
